@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import Layout from "./components/Layout";
+import Card from "./components/Card";
 
 //import Dropdown
 import { Dropdown, Modal, Button } from "react-bootstrap";
@@ -15,6 +16,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [count, setCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
+  const courses = [
+    {
+      id: 1,
+      title: "React.js untuk Pemula",
+      description: "Pas buat kamu yang baru menganal & belajar react.js",
+      imageUrl:
+        "https://file.mejik.id/microgen-lms1580923239567/course/hldks2reactjs.png",
+    },
+    {
+      id: 2,
+      title: "Javascript untuk Pemula",
+      description: "Pas buat kamu yang pengen belajar javascript",
+      imageUrl:
+        "https://file.mejik.id/microgen-lms1580923239567/course/lwxzxfjavascript.png",
+    },
+    {
+      id: 3,
+      title: "HTML & CSS Fundamental",
+      description:
+        "Panduan lengkap untuk membuat aplikasi WEB frontend dengan HTML & CSS untuk kamu yang baru ingin memulai karir sebagai web developer.",
+      imageUrl:
+        "https://file.mejik.id/microgen-lms1580923239567/course/opjpvwhtmlcss.png",
+    },
+    {
+      id: 4,
+      title: "Git untuk Pemula",
+      description: "Belajar tentang GIT untuk pemula.",
+      imageUrl:
+        "https://file.mejik.id/microgen-lms1580923239567/course/ot0vjigitgithub.png",
+    },
+  ];
 
   const props = {
     title: "Saya dari parent",
@@ -52,22 +85,30 @@ function App() {
       </Button>
 
       <Layout>
-        {/* conditional rendering */}
+        {/* perulangan pada component Card */}
+        <div class="row">
+          {courses.map((course) => (
+            <Card
+              title={course.title}
+              description={course.description}
+              imageUrl={course.imageUrl}
+              key={course.id}
+            />
+          ))}
+        </div>
+
+        {/* conditional rendering dan perulangan */}
         <ul>
-          <li
-            style={{
-              color: listBooks[0].isRed ? "red" : "green",
-            }}
-          >
-            <h2> {listBooks[0].name}</h2>
-          </li>
-          <li
-            style={{
-              color: listBooks[1].isRed ? "red" : "green",
-            }}
-          >
-            <h2>{listBooks[1].name}</h2>
-          </li>
+          {listBooks.map((book) => (
+            <li
+              style={{
+                color: book.isRed ? "red" : "green",
+              }}
+              key={index}
+            >
+              <h2> {book.name}</h2>
+            </li>
+          ))}
         </ul>
         {/* classname */}
         <button className="btn-secondary" onClick={() => setCount(count + 1)}>
