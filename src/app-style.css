@@ -1,0 +1,8 @@
+.btn-secondary {
+  background-color: yellow;
+  padding: 10px 20px;
+  border-color: yellow;
+  border-radius: 5px;
+  color: black;
+  font-size: 18px;
+}
