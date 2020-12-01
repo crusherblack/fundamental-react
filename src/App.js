@@ -12,6 +12,9 @@ import "./app-style.css";
 //import bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
+//import logo svg
+import Logo from "./logo.svg";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -55,7 +58,6 @@ function App() {
           Increament
         </button>
         {/* inline styling */}
-
         <h1
           style={{
             backgroundColor: "red",
@@ -83,6 +85,36 @@ function App() {
             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
+        {/* load image dari folder public */}
+        <img
+          src="/dumbways.png"
+          alt="dumbways image"
+          style={{
+            height: "300px",
+            display: "block",
+            marginTop: "10px",
+          }}
+        />
+        {/* load svg */}
+        <img
+          src={Logo}
+          alt="logo svg"
+          style={{
+            height: "100px",
+            display: "block",
+            marginTop: "10px",
+          }}
+        />
+        {/*         load image dari internet */}
+        <img
+          src="https://images.unsplash.com/photo-1601452168062-ead9e4519929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+          alt="gambar dari internet"
+          style={{
+            height: "300px",
+            display: "block",
+            marginTop: "10px",
+          }}
+        />
       </Layout>
       <Footer />
     </>
