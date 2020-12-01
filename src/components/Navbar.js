@@ -21,6 +21,9 @@ const NavbarComponent = () => {
           <Nav.Link as={Link} to="/axios">
             Axios
           </Nav.Link>
+          <Nav.Link as={Link} to="/todo">
+            Todo
+          </Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
