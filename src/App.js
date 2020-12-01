@@ -99,7 +99,7 @@ function App() {
 
         {/* conditional rendering dan perulangan */}
         <ul>
-          {listBooks.map((book) => (
+          {listBooks.map((book, index) => (
             <li
               style={{
                 color: book.isRed ? "red" : "green",
