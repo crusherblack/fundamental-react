@@ -8,25 +8,28 @@ import Axios from "./pages/Axios";
 import Todo from "./pages/Todo";
 
 import Navbar from "./components/Navbar";
+import { AppContextProvider } from "./context/appContext";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/post/:id" component={Detail} />
-        <Route exact path="/fetch" component={Fetch} />
-        <Route exact path="/axios" component={Axios} />
-        <Route exact path="/todo" component={Todo} />
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <AppContextProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/post/:id" component={Detail} />
+          <Route exact path="/fetch" component={Fetch} />
+          <Route exact path="/axios" component={Axios} />
+          <Route exact path="/todo" component={Todo} />
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </AppContextProvider>
   );
 }
 export default App;
