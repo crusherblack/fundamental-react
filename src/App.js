@@ -6,6 +6,7 @@ import Detail from "./pages/Detail";
 import Fetch from "./pages/Fetch";
 import Axios from "./pages/Axios";
 import Todo from "./pages/Todo";
+import UseReducer from "./pages/UseReducer";
 
 import Navbar from "./components/Navbar";
 import { AppContextProvider } from "./context/appContext";
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/fetch" component={Fetch} />
           <Route exact path="/axios" component={Axios} />
           <Route exact path="/todo" component={Todo} />
+          <Route exact path="/use-reducer" component={UseReducer} />
           <Route exact path="/about">
             <About />
           </Route>
