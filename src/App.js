@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Layout from "./components/Layout";
@@ -16,6 +16,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [count, setCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
+  //useEffect
+  useEffect(() => {
+    //effect, code, function etc
+    return () => {
+      //cleanup function
+    };
+  }, []); //dependencies
+
+  useEffect(() => {
+    console.log("effect dijalankan");
+  }, []);
+
+  useEffect(() => {
+    console.log("Berjalan terus menerus setiap ada render");
+  });
+
+  useEffect(() => {
+    console.log("Hanya berjalan sekali");
+  }, []);
+
+  useEffect(() => {
+    console.log(
+      "Akan berjalan kembali setiap kali ada perubahan pada state count"
+    );
+  }, [count]);
+
+  useEffect(() => {
+    return () => {
+      console.log("dijalankan sebelum component didestroy");
+    };
+  }, []);
 
   const courses = [
     {
