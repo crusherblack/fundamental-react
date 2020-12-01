@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 
 //import Dropdown
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Modal, Button } from "react-bootstrap";
 
 //css
 import "./app-style.css";
@@ -12,11 +12,9 @@ import "./app-style.css";
 //import bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//import logo svg
-import Logo from "./logo.svg";
-
 function App() {
   const [count, setCount] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   const props = {
     title: "Saya dari parent",
@@ -39,10 +37,38 @@ function App() {
     },
   };
 
+  // data listbooks untuk conditional rendering
+  const listBooks = [
+    { name: "Buku Matematika", isRed: true },
+    { name: "Buku IPA", isRed: false },
+  ];
+
   return (
     <>
       <Header {...props} />
+      {/* tonggle modal button */}
+      <Button variant="secondary" onClick={() => setShowModal(true)}>
+        Open Modal
+      </Button>
+
       <Layout>
+        {/* conditional rendering */}
+        <ul>
+          <li
+            style={{
+              color: listBooks[0].isRed ? "red" : "green",
+            }}
+          >
+            <h2> {listBooks[0].name}</h2>
+          </li>
+          <li
+            style={{
+              color: listBooks[1].isRed ? "red" : "green",
+            }}
+          >
+            <h2>{listBooks[1].name}</h2>
+          </li>
+        </ul>
         {/* classname */}
         <button className="btn-secondary" onClick={() => setCount(count + 1)}>
           Increament
@@ -95,16 +121,6 @@ function App() {
             marginTop: "10px",
           }}
         />
-        {/* load svg */}
-        <img
-          src={Logo}
-          alt="logo svg"
-          style={{
-            height: "100px",
-            display: "block",
-            marginTop: "10px",
-          }}
-        />
         {/*         load image dari internet */}
         <img
           src="https://images.unsplash.com/photo-1601452168062-ead9e4519929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
@@ -117,6 +133,23 @@ function App() {
         />
       </Layout>
       <Footer />
+      {/* modal bootstrap */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Modal body text goes here.</p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+          <Button variant="primary">Save changes</Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
